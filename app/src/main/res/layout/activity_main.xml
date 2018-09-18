@@ -1,19 +1,110 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="4"
+
+    android:columnOrderPreserved="true"
+    android:rowCount="12"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/queueSizeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_marginBottom="20dp"
+        android:text="@string/q_size"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/queueSize"
+        android:layout_width="0dp"
+        android:layout_height="20dip"
+        android:layout_row="4"
+        android:layout_column="2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="20dp"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/workerLabel"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_row="0"
+        android:text="@string/worker_label" />
+
+    <TextView
+        android:id="@+id/worker"
+        android:layout_width="0dp"
+        android:layout_height="20dip"
+        android:layout_row="0"
+        android:layout_column="2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill_horizontal"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/facilityLabel"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:text="@string/facility_label" />
+
+    <TextView
+        android:id="@+id/facility"
+        android:layout_width="0dp"
+        android:layout_height="20dip"
+        android:layout_column="2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="1"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/stationLabel"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_marginBottom="10dp"
+        android:text="@string/station_label" />
+
+    <TextView
+        android:id="@+id/station"
+        android:layout_width="0dp"
+        android:layout_height="20dip"
+        android:layout_row="2"
+        android:layout_column="2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text=""/>
+
+    <View
+        android:layout_gravity="fill_horizontal"
+        android:layout_height="1dp"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnSpan="4"
+        android:layout_marginBottom="20dp"
+        android:background="#A9A9A9" />
 
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_row="5"
+        android:layout_column="0"
         android:onClick="doNext"
         android:text="@string/next_button" />
 
@@ -21,46 +112,38 @@
         android:id="@+id/skipButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/nextButton"
-        android:layout_alignBottom="@+id/nextButton"
-        android:layout_toRightOf="@+id/nextButton"
+        android:layout_row="5"
+        android:layout_column="1"
         android:onClick="doSkip"
         android:text="@string/skip_button" />
 
-    <ImageButton
-        android:id="@+id/openQrButton"
+    <Button
+        android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nextButton"
-        android:layout_below="@+id/nextButton"
-        android:onClick="doQRScan"
-        android:src="@drawable/qrcode2_icon" />
+        android:layout_column="3"
+        android:layout_row="5"
+        android:enabled="false"
+        android:onClick="doEdit"
+        android:text="@string/edit_label" />
 
     <TextView
         android:id="@+id/tokenLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/openQrButton"
-        android:layout_centerHorizontal="true"
+        android:layout_row="6"
+        android:layout_column="0"
         android:text="@string/token_label"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <Button
-        android:id="@+id/statsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:onClick="doQStats"
-        android:text="@string/stats_label" />
 
     <EditText
         android:id="@+id/qrCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/tokenLabel"
-        android:layout_toRightOf="@+id/openQrButton">
+        android:layout_row="6"
+        android:layout_column="1"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill_horizontal">
 
         <requestFocus />
     </EditText>
@@ -69,63 +152,36 @@
         android:id="@+id/commentsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/openQrButton"
-        android:layout_below="@+id/openQrButton"
-        android:layout_marginTop="26dp"
+        android:layout_row="7"
+        android:layout_column="0"
         android:text="@string/comments_label" />
-
-    <Button
-        android:id="@+id/prefsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="doPrefs"
-        android:text="@string/prefs_label" />
 
     <EditText
         android:id="@+id/comments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/commentsLabel"
-        android:layout_toRightOf="@+id/commentsLabel"
+        android:layout_row="7"
+        android:layout_column="1"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill_horizontal"
         android:inputType="textMultiLine" />
 
     <Button
-        android:id="@+id/editButton"
+        android:id="@+id/statsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:enabled="false"
-        android:onClick="doEdit"
-        android:text="@string/edit_label" />
-
-    <TextView
-        android:id="@+id/queueSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="0" />
-
-    <TextView
-        android:id="@+id/queueSizeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/statsButton"
-        android:layout_centerHorizontal="true"
-        android:text="@string/q_size"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_column="0"
+        android:layout_row="11"
+        android:onClick="doQStats"
+        android:layout_gravity="bottom"
+        android:text="@string/stats_label" />
 
     <Button
         android:id="@+id/endWaitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/prefsButton"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="31dp"
+        android:layout_row="8"
+        android:layout_column="3"
         android:onClick="doEndWait"
         android:text="@string/end_wait_label" />
 
@@ -133,9 +189,31 @@
         android:id="@+id/beginWaitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/prefsButton"
-        android:layout_marginBottom="31dp"
+        android:layout_row="8"
+        android:layout_column="2"
         android:onClick="doStartWait"
         android:text="@string/begin_wait_label" />
 
-</RelativeLayout>
+
+    <Button
+        android:id="@+id/prefsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="10"
+        android:onClick="doPrefs"
+        android:text="@string/prefs_label" />
+
+    <ImageButton
+        android:id="@+id/openQrButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_row="10"
+        android:layout_rowSpan="2"
+        android:layout_column="2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="end"
+        android:scaleType="fitCenter"
+        android:onClick="doQRScan"
+        android:src="@drawable/qrcode2_icon" />
+</GridLayout>
