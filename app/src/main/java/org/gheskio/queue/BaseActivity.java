@@ -1,6 +1,5 @@
 package org.gheskio.queue;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -8,7 +7,9 @@ import android.preference.PreferenceManager;
 
 import java.util.Locale;
 
-public class BaseActivity extends Activity{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class BaseActivity extends AppCompatActivity {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(updateBaseContextLocale(base));
     }

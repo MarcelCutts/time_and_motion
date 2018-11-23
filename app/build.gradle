@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "org.gheskio.queue"
-//        minSdkVersion 8 ORIGINAL
-        minSdkVersion 17
-        targetSdkVersion 18
+        minSdkVersion 28
+        targetSdkVersion 28
     }
 
     buildTypes {
@@ -26,10 +25,9 @@ android {
 dependencies {
     // compile 'com.android.support:support-v4:18.0.0' ORIGINAL
     implementation 'com.google.android.gms:play-services-analytics:10.2.4'
-    implementation 'com.android.support:support-v4:23.0.0'
-    implementation "com.android.support:appcompat-v7:23.1.1"
     implementation 'me.dm7.barcodescanner:zxing:1.8.4'
     implementation files('libs/jtds.1.3.1.jar')
     implementation files('libs/servlet-api.jar')
+    implementation 'com.google.android.material:material:1.1.0-alpha01'
 
 }
